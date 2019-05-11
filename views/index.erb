@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>単語帳</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/wordbox.css">
+</head>
+<body>
+    <header>
+        <h1><a href="#form-box">★</a></h1>
+    </header>
+    
+    <div id="form-box">
+        <a href="#"></a>
+    <form action="/new" method="post" enctype="multipart/form-data">
+        <a href="#">×</a>
+        <h3>登録ファーム</h3>
+        <h4>見出し</h4>
+        <input type="text" placeholder="タイトル" name="title">
+        <h4>本文</h4>
+        <textarea name="body" id="" cols="30" rows="10"></textarea>
+        <h4>参考リンク</h4>
+        <input type="text" placeholder="リンク先のタイトル" name="linkTitle">
+        <input type="url" placeholder="URL" name="url">
+        <input type="submit" value="投稿">
+    </form>
+    </div>
+    
+    <main>
+        <% @contents.each do |content| %>
+        <article>
+            <h2><%= content.title %></h2>
+            <p><%= content.body %></p>
+            <p>参考リンク:<a href="<%= content.url %>"><%= content.linkTitle %></a></p>
+            <div class="edit">
+                <form action="/edit/<%= content.id %>" method="post"><input type="submit" value="編集"></form>
+                <form action="/delete/<%= content.id %>" method="post"><input type="submit" value="削除"></form>
+            </div>
+        </article>    
+        <% end %>
+    </main>
+
+</body>
+</html>

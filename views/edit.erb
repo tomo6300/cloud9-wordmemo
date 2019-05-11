@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>単語帳</title>
+</head>
+<body>
+   <div id="form-box" class="edit-view">
+        <a href="#"></a>
+    <form action="/renew/<%= @content.id %>" method="post" enctype="multipart/form-data">
+        <a href="#">×</a>
+        <h3>編集ファーム</h3>
+        <h4>見出し</h4>
+        <input type="text" placeholder="タイトル" name="title" value="<%= @content.title %>">
+        <h4>本文</h4>
+        <textarea name="body" id="" cols="30" rows="10"><%= @content.body %></textarea>
+        <h4>参考リンク</h4>
+        <input type="text" placeholder="リンク先のタイトル" name="linkTitle" value="<%= @content.linkTitle %>">
+        <input type="url" placeholder="URL" name="url" value="<%= @content.url %>">
+        <input type="submit" value="編集完了">
+    </form>
+    </div>
+</body> 
+</html>
